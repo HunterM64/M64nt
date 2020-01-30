@@ -34,7 +34,7 @@ async def add(ctx, left : int, right : int):
 
 @bot.command()
 async def ping(ctx):
-    """Tests ping"""
+    """Tests bot latency"""
     await ctx.send("pong! {0} ms".format(round(bot.latency, 3) * 1000))
 
 @bot.command()

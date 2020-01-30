@@ -18,7 +18,7 @@ async def on_ready():
     print(bot.user.id)
     print('------')
     
-    await bot.change_presence(activity=discord.Game("with your emotions") 
+    await bot.change_presence(activity=discord.Game("with your emotions"))
         
 # bot commands
 @bot.command()
@@ -33,19 +33,14 @@ async def add(ctx, left : int, right : int):
     await ctx.send(left + right)
 
 @bot.command()
-async def foo(ctx):
-    """just testing bot event and command conflicts"""
-    await ctx.send("did i pass the test?")
-
-@bot.command()
 async def ping(ctx):
     """Tests ping"""
-    await ctx.send("pong! {round(bot.latency * 1000)}ms")
+    await ctx.send("pong! {0} ms".format(round(bot.latency, 3) * 1000))
 
 @bot.command()
 async def dm(ctx):
     """Sends a DM"""
-    await ctx.author.send("whomst has summoned the great one?")
+    await ctx.author.send("whomst has summoned the ancient one?")
                               
 # bot events
 @bot.event
@@ -53,9 +48,6 @@ async def on_message(message):
 
     if ("owo" in message.content) and (message.author.bot == False):
         await message.channel.send("don't you freaking owo me")
-
-    if ("foo" in message.content) and (message.author.bot == False):
-        await message.channel.send("foo to you too!")
         
     await bot.process_commands(message)
     

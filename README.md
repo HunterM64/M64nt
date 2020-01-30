@@ -2,5 +2,4 @@
 
 this is the discord bot made for my discord server, The Discord of Destiny \
 \
-command list 
-- nothing
+Check the wiki for information on commands!

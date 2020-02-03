@@ -41,6 +41,11 @@ async def ping(ctx):
 async def dm(ctx):
     """Sends a DM"""
     await ctx.author.send("whomst has summoned the ancient one?")
+  
+@bot.command()
+async def orderPizza(ctx):
+    """Oders pizza from Dominos?"""
+    await ctx.author.send("This is not finished yet. Check back later!")
                               
 # bot events
 @bot.event

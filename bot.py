@@ -44,7 +44,7 @@ async def dm(ctx):
   
 @bot.command()
 async def orderPizza(ctx):
-    """Oders pizza from Dominos?"""
+    """Orders pizza from Dominos?"""
     await ctx.author.send("This is not finished yet. Check back later!")
                               
 # bot events

@@ -46,6 +46,11 @@ async def dm(ctx):
 async def orderPizza(ctx):
     """Orders pizza from Dominos?"""
     await ctx.author.send("This is not finished yet. Check back later!")
+
+@bot.command()
+async def wsl(ctx):
+    """Did you know about WSL?"""
+    await ctx.send("Did you know WSL lets you use a Bash terminal on Windows? Epic!")
                               
 # bot events
 @bot.event

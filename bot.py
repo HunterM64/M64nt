@@ -7,7 +7,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = os.getenv('DISCORD_TOKEN') 
 
 start_time = datetime.datetime.utcnow() # Timestamp of when bot came online
 
@@ -75,7 +75,7 @@ async def uptime(ctx):
 @bot.event
 async def on_message(message):
 
-    if ("owo" in message.content) and (message.author.bot == false):
+    if ("owo" in message.content) and (message.author.bot == False):
         await message.channel.send("don't you freaking owo me")
         
     await bot.process_commands(message)

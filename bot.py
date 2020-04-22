@@ -7,7 +7,8 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN') 
+TOKEN = os.getenv('DISCORD_TOKEN')
+owner_id = os.getenv('OWNER_ID')
 
 start_time = datetime.datetime.utcnow() # Timestamp of when bot came online
 
@@ -64,13 +65,26 @@ async def uptime(ctx):
     minutes, seconds = divmod(remainder, 60)
     days, hours = divmod(hours, 24)
     if days:
-        time_format = "**{d}** days, **{hours}**, **{m}** minutes, and **{s}** seconds."
+        time_format = "**{d}** days, **{h}** hours, **{m}** minutes, and **{s}** seconds."
     else:
-        time_format = "**{hours}**, **{m}** minutes, and **{s}** seconds."
+        time_format = "**{h}** hours, **{m}** minutes, and **{s}** seconds."
     uptime_stamp = time_format.format(d=days, h=hours, m=minutes, s=seconds)
     await ctx.send("I have been up for {}".format(uptime_stamp))
 
+@bot.command()
+@commands.is_owner()
+async def log(ctx, *, args):
     
+    #write to file 
+    f = open("log.txt", "a")
+    f.write("\n")
+    f.write(args)
+    f.close()
+
+    #send what was written
+    await ctx.author.send('Wrote {}'.format(args))
+
+
 # bot events
 @bot.event
 async def on_message(message):
@@ -80,6 +94,10 @@ async def on_message(message):
         
     await bot.process_commands(message)
     
-
+# errors 
+@log.error
+async def log_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("no")
 
 bot.run(TOKEN)

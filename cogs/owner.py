@@ -3,7 +3,6 @@
 import discord
 from discord.ext import commands
 
-
 class Owner(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -19,6 +18,7 @@ class Owner(commands.Cog):
         f = open("log.txt", "a")
         f.write("\n")
         f.write(args)
+        f.write("\n")
         f.close()
 
         #send what was written
@@ -36,8 +36,4 @@ class Owner(commands.Cog):
         """Reads contents of log.txt"""
         await ctx.author.send('Still working!')
 
-    # errors 
-    @log.error
-    async def log_error(self, ctx, error):
-        if isinstance(error, commands.CheckFailure):
-            await ctx.send("no")
+    

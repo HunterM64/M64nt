@@ -5,6 +5,7 @@ import discord
 import datetime
 from discord.ext import commands
 from dotenv import load_dotenv
+from cogs import owner
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -23,7 +24,10 @@ async def on_ready():
     print('------')
     
     await bot.change_presence(activity=discord.Game("with your emotions"))
-        
+
+# add cogs
+bot.add_cog(owner.Owner(bot))
+
 # bot commands
 @bot.command()
 async def hello(ctx):
@@ -46,10 +50,10 @@ async def dm(ctx):
     """Sends a DM"""
     await ctx.author.send("whomst has summoned the ancient one?")
   
-@bot.command()
-async def orderPizza(ctx):
-    """Orders pizza from Dominos?"""
-    await ctx.author.send("This is not finished yet. Check back later!")
+# @bot.command()
+# async def orderPizza(ctx):
+#     """Orders pizza from Dominos?"""
+#     await ctx.author.send("This is not finished yet. Check back later!")
 
 @bot.command()
 async def wsl(ctx):
@@ -71,18 +75,18 @@ async def uptime(ctx):
     uptime_stamp = time_format.format(d=days, h=hours, m=minutes, s=seconds)
     await ctx.send("I have been up for {}".format(uptime_stamp))
 
-@bot.command()
-@commands.is_owner()
-async def log(ctx, *, args):
+# @bot.command()
+# @commands.is_owner()
+# async def log(ctx, *, args):
     
-    #write to file 
-    f = open("log.txt", "a")
-    f.write("\n")
-    f.write(args)
-    f.close()
+#     #write to file 
+#     f = open("log.txt", "a")
+#     f.write("\n")
+#     f.write(args)
+#     f.close()
 
-    #send what was written
-    await ctx.author.send('Wrote {}'.format(args))
+#     #send what was written
+#     await ctx.author.send('Wrote {}'.format(args))
 
 
 # bot events
@@ -93,11 +97,5 @@ async def on_message(message):
         await message.channel.send("don't you freaking owo me")
         
     await bot.process_commands(message)
-    
-# errors 
-@log.error
-async def log_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("no")
 
 bot.run(TOKEN)

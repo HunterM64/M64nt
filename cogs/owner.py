@@ -20,7 +20,6 @@ class Owner(commands.Cog):
             f = open("log.txt", "a")
             f.write("\n")
             f.write(args)
-            f.write("\n")
         except IOError:
             await ctx.author.send("IOError")
         finally:
@@ -37,7 +36,7 @@ class Owner(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def read(self, ctx, lines):
+    async def read(self, ctx):
         """Reads contents of log.txt"""
         await ctx.author.send('Still working!')
         try:

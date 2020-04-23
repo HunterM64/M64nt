@@ -24,9 +24,9 @@ class User(commands.Cog):
         await ctx.send(left + right)
 
     @commands.command()
-    async def ping(self, bot, ctx):
+    async def ping(self, ctx):
         """Tests bot latency"""
-        await ctx.send("pong! {0} ms".format(round(bot.latency, 3) * 1000))
+        await ctx.send("pong! {0} ms".format(round(self.bot.latency, 3) * 1000))
 
     @commands.command()
     async def dm(self, ctx):

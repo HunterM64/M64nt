@@ -15,11 +15,16 @@ class Owner(commands.Cog):
         """Writes arguments to log.txt"""
     
         #write to file 
-        f = open("log.txt", "a")
-        f.write("\n")
-        f.write(args)
-        f.write("\n")
-        f.close()
+       
+        try: 
+            f = open("log.txt", "a")
+            f.write("\n")
+            f.write(args)
+            f.write("\n")
+        except IOError:
+            await ctx.author.send("IOError")
+        finally:
+            f.close()
 
         #send what was written
         await ctx.author.send('Wrote {}'.format(args))
@@ -32,8 +37,15 @@ class Owner(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def read(self, ctx):
+    async def read(self, ctx, lines):
         """Reads contents of log.txt"""
         await ctx.author.send('Still working!')
+        try:
+            f = open("log.txt", "r")
+            await ctx.author.send(f.read())
+        except IOError:
+            await ctx.author.send("IOError")
+        finally: 
+            f.close()
 
     

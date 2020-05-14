@@ -39,8 +39,8 @@ async def on_message(message):
 # error bot event
 @bot.event
 async def on_command_error(ctx, error):
-    if error.equals("CommandNotFound"):
-        await ctx.send("command not found, did you mean?")
+    if isinstance(error, CommandNotFound):
+        await ctx.send("Command not found, did you mean?")
     else:
         await ctx.send(error)
 

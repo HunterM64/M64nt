@@ -30,12 +30,6 @@ class Owner(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def orderPizza(self, ctx):
-        """Orders pizza from Dominos?"""
-        await ctx.author.send("This is not finished yet. Check back later!")
-
-    @commands.command()
-    @commands.is_owner()
     async def read(self, ctx):
         """Reads contents of log.txt"""
         await ctx.author.send('Still working!')

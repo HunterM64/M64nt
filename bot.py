@@ -3,7 +3,7 @@
 import os
 import discord
 from discord.ext import commands
-from discord.ext.comamnds import CommandNotFound
+from discord.ext.commands import CommandNotFound
 from dotenv import load_dotenv
 from cogs import owner
 from cogs import user

@@ -40,7 +40,7 @@ async def on_message(message):
 # functions 
 
 # finds command most similar to command given 
-def findSimilarString(string):
+def findSimilarString(inputString):
     returnString = ""
     commands = [ "help", "uptime", "ping"]
     overlap = 0
@@ -50,12 +50,20 @@ def findSimilarString(string):
     for testString in commands:
 
         i = 0
+        overlap = 0
 
-        while(i < len(string)):
-            if(len(testString) == len(string)):
-                if (testString[i] == string[i]):
+        if(len(inputString) < len(testString)):
+            while (i < len(inputString)):
+                print(str(i))
+                if(inputString[i] == testString[i]):
                     overlap += 1
-            i += 1
+                i += 1
+        else:
+            while (i < len(testString)):
+                print(str(i))
+                if (inputString[i] == testString[i]):
+                    overlap += 1
+                i += 1
 
         if(overlap > bestOverlap):
             bestOverlap = overlap
@@ -69,7 +77,6 @@ def findSimilarString(string):
 async def on_command_error(ctx, error):
     if isinstance(error, CommandNotFound):
         await ctx.send("Command not found, did you mean " + findSimilarString(ctx.message.content[1:]))
-        await ctx.send(ctx.message.content[1:])
     else:
         await ctx.send(error)
 

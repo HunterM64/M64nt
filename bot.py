@@ -56,7 +56,7 @@ def findSimilarString(string):
                 if (testString[i] == string[i]):
                     overlap += 1
             i += 1
-            
+
         if(overlap > bestOverlap):
             bestOverlap = overlap
             bestString = testString
@@ -68,8 +68,8 @@ def findSimilarString(string):
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, CommandNotFound):
-        await ctx.send("Command not found, did you mean " + findSimilarString("helo"))
-        await ctx.send(ctx.message.content)
+        await ctx.send("Command not found, did you mean " + findSimilarString(ctx.message.content[1:]))
+        await ctx.send(ctx.message.content[1:])
     else:
         await ctx.send(error)
 

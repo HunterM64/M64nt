@@ -64,7 +64,7 @@ def findSimilarString(string):
 async def on_command_error(ctx, error, message):
     if isinstance(error, CommandNotFound):
         await ctx.send("Command not found, did you mean " + findSimilarString("helo"))
-        await ctx.send(message)
+        await ctx.send(message.content)
     else:
         await ctx.send(error)
 

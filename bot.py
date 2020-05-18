@@ -46,14 +46,19 @@ def findSimilarString(string):
     overlap = 0
     bestOverlap = 0
     bestString = ""
-    i = 0
 
     for testString in commands:
-        while( i < len(string)):
-            if(string[i] == testString[i]):
-                overlap += 1
-            i +=1
-        if (overlap > bestOverlap):
+
+        i = 0
+
+        while(i < len(string)):
+            if(len(testString) == len(string)):
+                if (testString[i] == string[i]):
+                    overlap += 1
+            i += 1
+            
+        if(overlap > bestOverlap):
+            bestOverlap = overlap
             bestString = testString
     
     returnString = bestString

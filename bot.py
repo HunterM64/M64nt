@@ -61,10 +61,10 @@ def findSimilarString(string):
 
 # error bot event
 @bot.event
-async def on_command_error(ctx, error, message):
+async def on_command_error(ctx, error):
     if isinstance(error, CommandNotFound):
         await ctx.send("Command not found, did you mean " + findSimilarString("helo"))
-        await ctx.send(message.content)
+        await ctx.send(ctx.message.content)
     else:
         await ctx.send(error)
 

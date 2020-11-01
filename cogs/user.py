@@ -39,10 +39,10 @@ class User(commands.Cog):
         """roll n x: Rolls n dice of x sides"""
         roll = 0
         #i = 0
-        for i in range(n):
-            rolledNumber = random.randint(1, x)
+        for i in range(int(n)):
+            rolledNumber = random.randint(1, int(x))
             roll = roll + rolledNumber
-        await ctx.send(str(n) + "d" + str(x) + " rolled: " + str(roll))
+        await ctx.send(n + "d" + x + " rolled: " + str(roll))
 
 
     # old commands 

@@ -3,6 +3,7 @@
 import discord
 from discord.ext import commands
 import datetime
+import random
 
 start_time = datetime.datetime.utcnow() # Timestamp of when bot came online
 
@@ -32,6 +33,17 @@ class User(commands.Cog):
             time_format = "**{h}** hours, **{m}** minutes, and **{s}** seconds."
         uptime_stamp = time_format.format(d=days, h=hours, m=minutes, s=seconds)
         await ctx.send("I have been up for {}".format(uptime_stamp))
+
+    @commands.command()
+    async def roll(self, ctx, n, x):
+        """roll n x: Rolls n dice of x sides"""
+        roll = 0
+        #i = 0
+        for i in range(n):
+            rolledNumber = random.randint(1, x)
+            roll = roll + rolledNumber
+        await ctx.send(str(n) + "d" + str(x) + " rolled: " + str(roll))
+
 
     # old commands 
 

@@ -41,7 +41,7 @@ async def on_message(message):
 
     if ("owo" in message.content) and (message.author.bot == False):
         await message.channel.send("don't you freaking owo me")
-        
+
     await bot.process_commands(message)
 
 # functions 

@@ -41,7 +41,7 @@ bot.add_cog(dnd.DnD(bot))
 @bot.event
 async def on_message(message):
     owo = "owo"
-    if (owo.lower in message.content.lower) and (message.author.bot == False):
+    if (owo in message.content) and (message.author.bot == False):
         await message.channel.send("don't you freaking owo me")
 
     await bot.process_commands(message)

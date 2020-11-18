@@ -7,6 +7,7 @@ from discord.ext.commands import CommandNotFound
 from dotenv import load_dotenv
 from cogs import owner
 from cogs import user
+from cogs import dnd
 import logging
 
 logger = logging.getLogger('discord')
@@ -34,12 +35,13 @@ async def on_ready():
 # add cogs
 bot.add_cog(owner.Owner(bot))
 bot.add_cog(user.User(bot))
+bot.add_cog(dnd.DnD(bot))
 
 # bot events
 @bot.event
 async def on_message(message):
-
-    if ("owo" in message.content) and (message.author.bot == False):
+    owo = "owo"
+    if (owo.lower in message.content.lower) and (message.author.bot == False):
         await message.channel.send("don't you freaking owo me")
 
     await bot.process_commands(message)
@@ -49,7 +51,7 @@ async def on_message(message):
 # finds command most similar to command given 
 def findSimilarString(inputString):
     returnString = ""
-    commands = [ "help", "uptime", "ping"]
+    commands = [ "help", "uptime", "ping", "roll", "mroll" ]
     overlap = 0
     bestOverlap = 0
     bestString = ""

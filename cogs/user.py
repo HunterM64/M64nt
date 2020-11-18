@@ -34,28 +34,6 @@ class User(commands.Cog):
         uptime_stamp = time_format.format(d=days, h=hours, m=minutes, s=seconds)
         await ctx.send("I have been up for {}".format(uptime_stamp))
 
-    @commands.command()
-    async def roll(self, ctx, n, x):
-        """roll n x: Rolls n dice of x sides"""
-        roll = 0
-        #i = 0
-        for i in range(int(n)):
-            rolledNumber = random.randint(1, int(x))
-            roll = roll + rolledNumber
-        await ctx.send(n + "d" + x + " rolled: " + str(roll))
-
-    @commands.command()
-    async def mroll(self, ctx, x, y, z):
-        """roll n x: Rolls n dice of x sides"""
-        roll = 0
-        #i = 0
-        for i in range(int(x)):
-            rolledNumber = random.randint(1, int(y))
-            roll = roll + rolledNumber
-        roll = roll + int(z)
-        await ctx.send(x + "d" + y + " rolled with modifier " + z + ": " + str(roll))
-
-
     # old commands 
 
     # @commands.command()

@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from cogs import owner
 from cogs import user
 from cogs import dnd
+from cogs import sql
 import logging
 
 logger = logging.getLogger('discord')
@@ -36,6 +37,7 @@ async def on_ready():
 bot.add_cog(owner.Owner(bot))
 bot.add_cog(user.User(bot))
 bot.add_cog(dnd.DnD(bot))
+bot.add_cog(sql.SQL(bot))
 
 # bot events
 @bot.event
